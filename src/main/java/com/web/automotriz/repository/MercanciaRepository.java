@@ -43,6 +43,19 @@ public class MercanciaRepository {
 		
 		return rows;		
 				
-	}																							
+	}
+	
+public int deleteMercanciaRepository(Mercancia mercancia) {
+		
+		Map<String, Object> respuesta = new HashMap<>();
+	
+		String sql = " DELETE FROM INVENTARIOAUTOMOTRIZ.MERCANCIA "
+				+ "WHERE IDMERCANCIA = ? AND USUARIOID = ? ";
+		
+		int rows = jdbcTemplate.update(sql, mercancia.getIdmercancia(), mercancia.getUsuarioid());
+		
+		return rows;		
+				
+	}
 	
 }

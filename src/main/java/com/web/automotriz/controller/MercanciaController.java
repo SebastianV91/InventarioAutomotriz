@@ -30,6 +30,14 @@ public class MercanciaController {
 		
 		return new ResponseEntity(mercanciaService.updateMercancia(mercancia), HttpStatus.OK);
 		
-	}																							
+	}
+	
+	@PostMapping("/eliminarMercancia")
+	public ResponseEntity<?> eliminarMercancia(@RequestBody Mercancia mercancia){
+		
+		return new ResponseEntity(mercanciaService.deleteMercancia(mercancia), HttpStatus.OK);
+		
+	}
+	
 	
 }
