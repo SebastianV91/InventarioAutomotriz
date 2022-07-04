@@ -60,4 +60,29 @@ public class MercanciaRepository {
 				
 	}
 	
+	public boolean selectNombreMercanciaRepository(Mercancia mercancia) {
+		
+		Map<String, Object> respuesta = new HashMap<>();
+		
+		String sql = "SELECT  "
+				+ " NOMBRE_PRODUCTO, CANTIDAD, FECHA_INGRESO "
+				+ " FROM INVENTARIOAUTOMOTRIZ.MERCANCIA  "
+				+ "WHERE NOMBRE_PRODUCTO = ? ";
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql, mercancia.getNombre_producto());
+		
+		if(rows != null) {
+			
+			if(rows.isEmpty()) {
+				return false;
+			}else {
+				return true;
+			}
+		
+		}else {
+			return true;
+		}
+		
+	}
+	
 }

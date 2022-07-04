@@ -18,7 +18,9 @@ public class MercanciaService extends MercanciaRepository{
 		
 		Map<String, Object> response = new HashMap<String, Object>();
 		
-		if(insertMercanciaRepository(mercancia) == 1) {
+		if(selectNombreMercanciaRepository(mercancia)) {
+			response.put("mensaje", "Mercancia existente");
+		}else if(insertMercanciaRepository(mercancia) == 1) {
 			response.put("mensaje", "Mercancia registrada");
 		}
 		
