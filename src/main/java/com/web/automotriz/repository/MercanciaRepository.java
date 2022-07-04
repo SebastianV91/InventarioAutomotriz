@@ -1,6 +1,8 @@
 package com.web.automotriz.repository;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class MercanciaRepository {
 				
 	}
 	
-public int deleteMercanciaRepository(Mercancia mercancia) {
+	public int deleteMercanciaRepository(Mercancia mercancia) {
 		
 		Map<String, Object> respuesta = new HashMap<>();
 	

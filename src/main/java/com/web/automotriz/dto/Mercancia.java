@@ -30,6 +30,8 @@ public class Mercancia {
 	
 	private Date fecha_modificacion;
 	
+	private String nombre;
+	
 	public Long getIdmercancia() {
 		return idmercancia;
 	}
@@ -84,6 +86,14 @@ public class Mercancia {
 
 	public void setFecha_modificacion(Date fecha_modificacion) {
 		this.fecha_modificacion = fecha_modificacion;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 }
