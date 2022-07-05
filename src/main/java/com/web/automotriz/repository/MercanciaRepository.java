@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.web.automotriz.dto.Mercancia;
+import com.web.automotriz.dto.Usuario;
 
 @Component
 public class MercanciaRepository {
