@@ -10,6 +10,7 @@ import java.util.TimeZone;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.web.automotriz.dto.ConsultaMercancia;
 import com.web.automotriz.dto.Mercancia;
 import com.web.automotriz.dto.Usuario;
 import com.web.automotriz.repository.MercanciaRepository;
@@ -76,7 +77,13 @@ public class MercanciaService extends MercanciaRepository{
 		return response;
 
 	}
-
+	
+	public Map<String, Object> selectRegistroMercancia(ConsultaMercancia consultaMercancia){
+		
+		return selectRegistroMercanciaRepository(consultaMercancia);
+		
+	}
+	
 	private boolean validateDate(Mercancia mercancia) {
 
 		try{

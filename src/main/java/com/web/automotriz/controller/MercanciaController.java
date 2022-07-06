@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.automotriz.dto.ConsultaMercancia;
 import com.web.automotriz.dto.Mercancia;
 import com.web.automotriz.service.MercanciaService;
 
@@ -36,6 +37,13 @@ public class MercanciaController {
 	public ResponseEntity<?> eliminarMercancia(@RequestBody Mercancia mercancia){
 		
 		return new ResponseEntity(mercanciaService.deleteMercancia(mercancia), HttpStatus.OK);
+		
+	}
+	
+	@PostMapping("/consultaMercancia")
+	public ResponseEntity<?> registroMercancia(@RequestBody ConsultaMercancia consultaMercancia){
+		
+		return new ResponseEntity(mercanciaService.selectRegistroMercancia(consultaMercancia), HttpStatus.OK);
 		
 	}
 	
