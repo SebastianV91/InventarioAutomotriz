@@ -1,5 +1,6 @@
 package com.web.automotriz.repository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.web.automotriz.dto.ConsultaMercancia;
 import com.web.automotriz.dto.Mercancia;
 import com.web.automotriz.dto.Usuario;
+import com.web.automotriz.mapper.ProductoMercancia;
 
 @Component
 public class MercanciaRepository {
@@ -90,6 +92,7 @@ public class MercanciaRepository {
 	public Map<String, Object> selectRegistroMercanciaRepository(ConsultaMercancia consultaMercancia){
 		
 		Map<String, Object> respuesta = new HashMap<>();
+		List<ProductoMercancia> listProductoMercancia = new ArrayList<>();
 	
 		String sql = "SELECT  "
 				+ " A.NOMBRE_PRODUCTO, A.CANTIDAD, A.FECHA_INGRESO, B.NOMBRE "
@@ -100,11 +103,20 @@ public class MercanciaRepository {
 
 		if(rows != null) {
 			for(Map<String, Object> row: rows) {
-				respuesta.put("NOMBRE_PRODUCTO", (String) row.get("NOMBRE_PRODUCTO"));
-				respuesta.put("CANTIDAD", (Integer) row.get("CANTIDAD"));
-				respuesta.put("FECHA_INGRESO", (Date) row.get("FECHA_INGRESO"));
-				respuesta.put("NOMBRE", (String) row.get("NOMBRE"));
+				ProductoMercancia productoMercancia = new ProductoMercancia();
+				productoMercancia.setNombre_producto((String) row.get("NOMBRE_PRODUCTO"));
+				productoMercancia.setCantidad((Integer) row.get("CANTIDAD"));
+				productoMercancia.setFecha_ingreso((Date) row.get("FECHA_INGRESO"));
+				productoMercancia.setNombre((String) row.get("NOMBRE"));
+				listProductoMercancia.add(productoMercancia);
 			}
+			
+			if(rows.isEmpty()) {
+				respuesta.put("message", "Este registro no existe");
+			}else {
+				respuesta.put("productoMercancia", listProductoMercancia);
+			}
+			
 		}
 		
 		return respuesta;
